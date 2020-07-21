@@ -104,7 +104,7 @@
                 </ul>
             </div>
             <div class="right-side-box">
-                <a class="join-btn" href="{{ url('register') }}">JOIN US</a>
+                <a class="join-btn" href="{{ url('dashboard') }}">JOIN US</a>
             </div>
         </div>
     </nav>
@@ -134,7 +134,7 @@
                 <div class="row">
                     <div class="col-lg-12 text-center">
                         <div class="get-start">
-                            <a href="{{ url('register') }}">GET STARTED NOW!</a>
+                            <a href="{{ url('dashboard') }}">GET STARTED NOW!</a>
                         </div>
                     </div>
                 </div>

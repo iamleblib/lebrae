@@ -22,8 +22,25 @@
                     </div>
                 </div>
 
-
-
+                <p>Your profile is 50% complete, click on your profile to provide all neccessary information</p>
+                <div id="myModal" class="modal fade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                                    <hr>
+                                </div>
+                                <p>Your profile is 50% complete, Please use the link below to complete your profile details.</p>
+                                <hr>
+                                <a href="{{ route('profile') }}" class="btn btn-primary">Provide Complete Profile Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-xl-4">
                         <div class="card overflow-hidden">

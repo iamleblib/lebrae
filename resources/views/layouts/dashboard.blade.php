@@ -389,7 +389,7 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img class="rounded-circle header-profile-user" src="{{ asset('public/assets/images/users/avatar-1.jpg') }}"
                              alt="Header Avatar">
-                        <span class="d-none d-xl-inline-block ml-1">{{ $user->fname . ' '. $user->lname }}</span>
+                        <span class="d-none d-xl-inline-block ml-1">{{ auth()->user()->fname . ' '. auth()->user()->lname }}</span>
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
@@ -498,7 +498,7 @@
 
 
 <script src="{{ asset('public/assets/js/app.js') }}"></script>
-
+<script src="{{ asset('public/assets/js/script.js') }}"></script>
 
 </body>
 </html>
