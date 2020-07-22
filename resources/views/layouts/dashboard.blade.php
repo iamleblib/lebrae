@@ -163,7 +163,10 @@
                                             <img src="{{ asset('public/assets/images/megamenu-img.png') }}" alt=""
                                                  class="img-fluid mx-auto d-block">
                                         </div>
-                                    </div>
+                                    </div><a href="indexc362.html?clang=gr" class="dropdown-item notify-item">
+                                        <img src="{{ asset('public/assets/images/flags/germany.jpg') }}" alt="user-image" class="mr-1" height="12">
+                                        <span class="align-middle">German</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -216,7 +219,7 @@
                         </a>
 
                         <a href="indexc362.html?clang=gr" class="dropdown-item notify-item">
-                            <img src="public/assets/images/flags/germany.jpg" alt="user-image" class="mr-1" height="12">
+                            <img src="{{ asset('public/assets/images/flags/germany.jpg') }}" alt="user-image" class="mr-1" height="12">
                             <span class="align-middle">German</span>
                         </a>
 
@@ -485,20 +488,6 @@
     </div>
 </div>
 <div class="rightbar-overlay"></div>
-<script src="{{ asset('public/assets/libs/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('public/assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('public/assets/libs/metismenu/metisMenu.min.js') }}"></script>
-<script src="{{ asset('public/assets/libs/simplebar/simplebar.min.js') }}"></script>
-<script src="{{ asset('public/assets/libs/node-waves/waves.min.js') }}"></script>
-
-
-<script src="{{ asset('public/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('public/assets/js/pages/user_dashboard.init.js') }}"></script>
-
-
-
-<script src="{{ asset('public/assets/js/app.js') }}"></script>
-<script src="{{ asset('public/assets/js/script.js') }}"></script>
-
+@include('includes.static_footer')
 </body>
 </html>

@@ -29,7 +29,8 @@ class DashboardController extends Controller
             return view('auth.admin_dashboard.index');
         } else {
             $user = auth()->user();
-            return view('auth.user_dashboard.index', compact('user'));
+            $userAccount = Users_account::where('user_id', $user->id)->first();
+            return view('auth.user_dashboard.index')->with(['user' => $user, 'userAccount' => $userAccount]);
         }
     }
 
@@ -63,6 +64,11 @@ class DashboardController extends Controller
 
         return redirect()->route('profile')->with('success', 'Your Profile Has Been Updated Successfully');
 
+    }
+
+    public function makeDeposit()
+    {
+        return view('auth.user_dashboard.deposit');
     }
 
 }

@@ -122,7 +122,43 @@
     border-radius: 0;
     margin-bottom: 0;
 }
+/*Deposit payment Gateway*/
+#select_payment {
+    color: green;
+    font-size:18px;
+}
+
+#bitcoinImg, #bankImg {
+    border: 2px solid #eee;
+}
+
+.img-select:hover {
+    cursor: pointer;
+    background-color: #eee;
+    border: 2px solid #fff;
+}
+
+/*Payment Method*/
+
+#selectPaymentMethod {
+    visibility: hidden;
+}
 
 
-/*Account Holder Display*/
+#bankForm {
+    display: none;
+}
 
+#bitcoinForm {
+    display: none;
+}
+
+/*Know what to choose*/
+
+#knowWhatToChoose {
+    display: none;
+}
+
+#bankBtn {
+    display: none;
+}

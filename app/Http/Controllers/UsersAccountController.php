@@ -59,17 +59,9 @@ class UsersAccountController extends Controller
         ]);
 
         if ($request->hasFile('passport') && $request->hasFile('valid_id')) {
-            $validIdName = str_replace(' ', '_', time(). 'valid_id' .$request->valid_id->getClientOriginalName());
-            $validPassportName = str_replace(' ', '_', time() . 'passport' . $request->passport->getClientOriginalName());
-            auth()->user()->update([
-                'valid_id' => $validIdName
-            ]);
-            auth()->user()->update([
-                'passport' => $validPassportName
-            ]);
-            $request->valid_id->storeAs('images', $validIdName, 'public');
-            $request->passport->storeAs('images', $validPassportName, 'public');
-            return redirect()->back()->with('success', 'Credentials Upload Successfully');
+            Users_account::uploadCredentials($request->valid_id, $request->passport);
         }
+        return redirect()->back()->with('success', 'Credentials Upload Successfully');
     }
+
 }

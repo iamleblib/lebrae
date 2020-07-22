@@ -9,11 +9,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card" id="profile-container">
-                            <div class="card-body">
+                            <div style="cursor: pointer;" class="card-body" onclick="toggleViewProperties('profile')">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h4 class="float-left card-title mb-4">Profile Details </h4>
-                                        <div id="pointer" class="float-right ml-5" onclick="toggleViewProperties('profile')">
+                                        <div id="pointer" class="float-right ml-5">
                                             <span id="profilestat" class="d-none d-xl-inline-block ml-1">Open</span>
                                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                                         </div>
@@ -362,12 +362,12 @@
 
                         </div>
 
-                        <div class="card" >
+                        <div style="cursor: pointer;" class="card" onclick="toggleViewProperties('valid_id')">
                             <div class="card-body" id="valid_id_container">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h4 class="float-left card-title mb-4">Valid ID's </h4>
-                                        <div id="pointer" class="float-right ml-5" onclick="toggleViewProperties('valid_id')">
+                                        <div id="pointer" class="float-right ml-5">
                                             <span id="validStat" class="d-none d-xl-inline-block ml-1">Open</span>
                                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                                         </div>
@@ -452,11 +452,11 @@
 
                     <div class="col-lg-12">
                         <div class="card" id="payment-container">
-                            <div class="card-body">
+                            <div style="cursor:pointer;" class="card-body" onclick="toggleViewProperties('payment')">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h4 class="float-left card-title mb-4">Payment Account Details  </h4>
-                                        <div id="pointer" class="float-right ml-5" onclick="toggleViewProperties('payment')">
+                                        <div id="pointer" class="float-right ml-5">
                                             <span id="paymentStat" class="d-none d-xl-inline-block ml-1">Open</span>
                                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                                         </div>
@@ -635,7 +635,7 @@
 
                                                 <div class="row">
                                                     <div class="col-md-6 pl-5">
-                                                        <img title="Available to Nigerians Only" onclick="methodPay('master_card')" id="master-card" width="200px" src="{{ asset('public/assets/images/bank.jpg') }}" alt="">
+                                                        <img title="Available to Nigerians Only" onclick="methodPay('master_card')" id="master-card" width="200px" src="{{ asset('public/assets/images/bank.png') }}" alt="">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <img class="p-4" title="Direct Payment to your Bitcoin Wallet" onclick="methodPay('btc')" width="220px" id="btcid" src="{{ asset('public/assets/images/bitcoin.png') }}" alt="">

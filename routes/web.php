@@ -23,6 +23,10 @@ Route::get('user_dashboard', function () {
 
 Auth::routes();
 
+//deposit page
+Route::get('make-deposit', 'DashboardController@makeDeposit')->name('make-deposit');
+//Route::get('deposit-request', 'TransactionController@depositFund')->name('depositFund');
+
 Route::get('/dashboard', 'DashboardController@index')->name('home');
 Route::get('/profile', 'DashboardController@profile')->name('profile');
 Route::post('/profile/update', 'DashboardController@updateProfile')->name('profile.update');

@@ -7,15 +7,17 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
-                        <i class="bx bx-home-circle"></i><span class="badge badge-pill badge-info float-right">03</span>
-                        <span> Dashboards </span>
+                    <a href="{{ route('home') }}" class="waves-effect">
+                        <i class="bx bx-home-circle"></i>
+                        <span> Dashboard </span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="index.html">Default</a></li>
-                        <li><a href="login.html">Saas</a></li>
-                        <li><a href="login.html">Crypto</a></li>
-                    </ul>
+                </li>
+
+                <li>
+                    <a href="{{ route('make-deposit') }}" class="waves-effect">
+                        <i class="bx bx-money"></i>
+                        <span> Make Investments </span>
+                    </a>
                 </li>
 
                 <li>
