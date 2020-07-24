@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\DepositRequest;
 use App\User;
 use App\Users_account;
 use Illuminate\Http\Request;
@@ -29,8 +30,13 @@ class DashboardController extends Controller
             return view('auth.admin_dashboard.index');
         } else {
             $user = auth()->user();
+            $depositRequests = DepositRequest::where('user_id', $user->id)->get();
             $userAccount = Users_account::where('user_id', $user->id)->first();
-            return view('auth.user_dashboard.index')->with(['user' => $user, 'userAccount' => $userAccount]);
+            return view('auth.user_dashboard.index')->with([
+                'user' => $user,
+                'userAccount' => $userAccount,
+                'depositRequests' =>  $depositRequests,
+            ]);
         }
     }
 

@@ -65,11 +65,17 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                         <div class="avatar-md profile-user-wid mb-4">
-                                            <img src="{{ asset('public/assets/images/users/avatar-1.jpg') }}" alt=""
+                                            @if(auth()->user()->passport)
+                                            <img src="{{ asset('storage/images/'.auth()->user()->passport ) }}" alt=""
                                                  class="img-thumbnail rounded-circle">
+                                            @endif
                                         </div>
-                                        <h5 class="font-size-15 text-truncate">Henry Price</h5>
-                                        <p class="text-muted mb-0 text-truncate">UI/UX Designer</p>
+                                        <h5 class="font-size-15 text-truncate">{{ auth()->user()->fname }}</h5>
+                                        @if(count($depositRequests) > 0)
+                                            @foreach($depositRequests as $depositRequest)
+                                                <p class="text-muted mb-0"> {{ $depositRequest->amount }} Plan</p>
+                                            @endforeach
+                                        @endif
                                     </div>
 
                                     <div class="col-sm-8">
@@ -77,12 +83,12 @@
 
                                             <div class="row">
                                                 <div class="col-6">
-                                                    <h5 class="font-size-15">125</h5>
-                                                    <p class="text-muted mb-0">Projects</p>
+                                                    <h5 class="font-size-15">$0</h5>
+                                                    <p class="text-muted mb-0">Investment</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <h5 class="font-size-15">$1245</h5>
-                                                    <p class="text-muted mb-0">Revenue</p>
+                                                    <h5 class="font-size-15">$0</h5>
+                                                    <p class="text-muted mb-0">Interest</p>
                                                 </div>
                                             </div>
                                             <div class="mt-4">
@@ -96,7 +102,7 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title mb-4">Monthly Earning</h4>
+                                <h4 class="card-title mb-4">{{ auth()->user()->de }} Earning</h4>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <p class="text-muted">This month</p>
@@ -177,25 +183,121 @@
                             </div>
                         </div>
                         <!-- end row -->
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Social Source</h4>
+                                        <div class="text-center">
+                                            <div class="avatar-sm mx-auto mb-4">
+                        <span class="avatar-title rounded-circle bg-soft-primary font-size-24">
+                            <i class="mdi mdi-facebook text-primary"></i>
+                        </span>
+                                            </div>
+                                            <p class="font-16 text-muted mb-2"></p>
+                                            <h5><a href="#" class="text-dark">Facebook - <span class="text-muted font-16">125 sales</span> </a>
+                                            </h5>
+                                            <p class="text-muted">Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero
+                                                venenatis faucibus tincidunt.</p>
+                                            <a href="#" class="text-primary font-16">Learn more <i class="mdi mdi-chevron-right"></i></a>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-4">
+                                                <div class="social-source text-center mt-3">
+                                                    <div class="avatar-xs mx-auto mb-3">
+                                <span class="avatar-title rounded-circle bg-primary font-size-16">
+                                    <i class="mdi mdi-facebook text-white"></i>
+                                </span>
+                                                    </div>
+                                                    <h5 class="font-size-15">Facebook</h5>
+                                                    <p class="text-muted mb-0">125 sales</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="social-source text-center mt-3">
+                                                    <div class="avatar-xs mx-auto mb-3">
+                                <span class="avatar-title rounded-circle bg-info font-size-16">
+                                    <i class="mdi mdi-twitter text-white"></i>
+                                </span>
+                                                    </div>
+                                                    <h5 class="font-size-15">Twitter</h5>
+                                                    <p class="text-muted mb-0">112 sales</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="social-source text-center mt-3">
+                                                    <div class="avatar-xs mx-auto mb-3">
+                                <span class="avatar-title rounded-circle bg-pink font-size-16">
+                                    <i class="mdi mdi-instagram text-white"></i>
+                                </span>
+                                                    </div>
+                                                    <h5 class="font-size-15">Instagram</h5>
+                                                    <p class="text-muted mb-0">104 sales</p>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title mb-4 float-sm-left">Email Sent</h4>
-                                <div class="float-sm-right">
-                                    <ul class="nav nav-pills">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Week</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Month</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link active" href="#">Year</a>
-                                        </li>
-                                    </ul>
+                                    </div>
                                 </div>
-                                <div class="clearfix"></div>
-                                <div id="stacked-column-chart" class="apex-charts" dir="ltr"></div>
+                            </div>
+
+{{--                            Social ends--}}
+
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Social Source</h4>
+                                        <div class="text-center">
+                                            <div class="avatar-sm mx-auto mb-4">
+                        <span class="avatar-title rounded-circle bg-soft-primary font-size-24">
+                            <i class="mdi mdi-facebook text-primary"></i>
+                        </span>
+                                            </div>
+                                            <p class="font-16 text-muted mb-2"></p>
+                                            <h5><a href="#" class="text-dark">Facebook - <span class="text-muted font-16">125 sales</span> </a>
+                                            </h5>
+                                            <p class="text-muted">Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero
+                                                venenatis faucibus tincidunt.</p>
+                                            <a href="#" class="text-primary font-16">Learn more <i class="mdi mdi-chevron-right"></i></a>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-4">
+                                                <div class="social-source text-center mt-3">
+                                                    <div class="avatar-xs mx-auto mb-3">
+                                <span class="avatar-title rounded-circle bg-primary font-size-16">
+                                    <i class="mdi mdi-facebook text-white"></i>
+                                </span>
+                                                    </div>
+                                                    <h5 class="font-size-15">Facebook</h5>
+                                                    <p class="text-muted mb-0">125 sales</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="social-source text-center mt-3">
+                                                    <div class="avatar-xs mx-auto mb-3">
+                                <span class="avatar-title rounded-circle bg-info font-size-16">
+                                    <i class="mdi mdi-twitter text-white"></i>
+                                </span>
+                                                    </div>
+                                                    <h5 class="font-size-15">Twitter</h5>
+                                                    <p class="text-muted mb-0">112 sales</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="social-source text-center mt-3">
+                                                    <div class="avatar-xs mx-auto mb-3">
+                                <span class="avatar-title rounded-circle bg-pink font-size-16">
+                                    <i class="mdi mdi-instagram text-white"></i>
+                                </span>
+                                                    </div>
+                                                    <h5 class="font-size-15">Instagram</h5>
+                                                    <p class="text-muted mb-0">104 sales</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -414,7 +516,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title mb-4">Latest Transaction</h4>
+                                <h4 class="card-title mb-4">Transaction History</h4>
                                 <div class="table-responsive">
                                     <table class="table table-centered table-nowrap mb-0">
                                         <thead class="thead-light">
@@ -425,198 +527,38 @@
                                                     <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                                                 </div>
                                             </th>
-                                            <th>Order ID</th>
-                                            <th>Billing Name</th>
-                                            <th>Date</th>
-                                            <th>Total</th>
-                                            <th>Payment Status</th>
-                                            <th>Payment Method</th>
-                                            <th>View Details</th>
+                                            <th>Refference ID</th>
+                                            <th>Amount Invested</th>
+                                            <th>Plan</th>
+                                            <th>Status</th>
+                                            <th>Interest</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
+                                        @if(count($depositRequests) > 0)
                                         <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                                    <label class="custom-control-label" for="customCheck2">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript: void(0);" class="text-body font-weight-bold">#SK2540</a> </td>
-                                            <td>Neal Matthews</td>
-                                            <td>
-                                                07 Oct, 2019
-                                            </td>
-                                            <td>
-                                                $400
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-pill badge-soft-success font-size-12">Paid</span>
-                                            </td>
-                                            <td>
-                                                <i class="fab fa-cc-mastercard mr-1"></i> Mastercard
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button"
-                                                        class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                        data-toggle="modal" data-target=".exampleModal">
-                                                    View Details
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                                    <label class="custom-control-label" for="customCheck3">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript: void(0);" class="text-body font-weight-bold">#SK2541</a> </td>
-                                            <td>Jamal Burnett</td>
-                                            <td>
-                                                07 Oct, 2019
-                                            </td>
-                                            <td>
-                                                $380
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-pill badge-soft-danger font-size-12">Chargeback</span>
-                                            </td>
-                                            <td>
-                                                <i class="fab fa-cc-visa mr-1"></i> Visa
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button"
-                                                        class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                        data-toggle="modal" data-target=".exampleModal">
-                                                    View Details
-                                                </button>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck4">
-                                                    <label class="custom-control-label" for="customCheck4">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript: void(0);" class="text-body font-weight-bold">#SK2542</a> </td>
-                                            <td>Juan Mitchell</td>
-                                            <td>
-                                                06 Oct, 2019
-                                            </td>
-                                            <td>
-                                                $384
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-pill badge-soft-success font-size-12">Paid</span>
-                                            </td>
-                                            <td>
-                                                <i class="fab fa-cc-paypal mr-1"></i> Paypal
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button"
-                                                        class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                        data-toggle="modal" data-target=".exampleModal">
-                                                    View Details
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck5">
-                                                    <label class="custom-control-label" for="customCheck5">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript: void(0);" class="text-body font-weight-bold">#SK2543</a> </td>
-                                            <td>Barry Dick</td>
-                                            <td>
-                                                05 Oct, 2019
-                                            </td>
-                                            <td>
-                                                $412
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-pill badge-soft-success font-size-12">Paid</span>
-                                            </td>
-                                            <td>
-                                                <i class="fab fa-cc-mastercard mr-1"></i> Mastercard
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button"
-                                                        class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                        data-toggle="modal" data-target=".exampleModal">
-                                                    View Details
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck6">
-                                                    <label class="custom-control-label" for="customCheck6">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript: void(0);" class="text-body font-weight-bold">#SK2544</a> </td>
-                                            <td>Ronald Taylor</td>
-                                            <td>
-                                                04 Oct, 2019
-                                            </td>
-                                            <td>
-                                                $404
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-pill badge-soft-warning font-size-12">Refund</span>
-                                            </td>
-                                            <td>
-                                                <i class="fab fa-cc-visa mr-1"></i> Visa
-                                            </td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <button type="button"
-                                                        class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                        data-toggle="modal" data-target=".exampleModal">
-                                                    View Details
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck7">
-                                                    <label class="custom-control-label" for="customCheck7">&nbsp;</label>
-                                                </div>
-                                            </td>
-                                            <td><a href="javascript: void(0);" class="text-body font-weight-bold">#SK2545</a> </td>
-                                            <td>Jacob Hunter</td>
-                                            <td>
-                                                04 Oct, 2019
-                                            </td>
-                                            <td>
-                                                $392
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-pill badge-soft-success font-size-12">Paid</span>
-                                            </td>
-                                            <td>
-                                                <i class="fab fa-cc-paypal mr-1"></i> Paypal
-                                            </td>
-                                            <td>
-                                                <button type="button"
-                                                        class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"
-                                                        data-toggle="modal" data-target=".exampleModal">
-                                                    View Details
-                                                </button>
-                                            </td>
-                                        </tr>
+                                        @foreach($depositRequests as $depositRequest)
+                                            <tr>
+                                                <td></td>
+                                                <td>Not Generated</td>
+                                                <td>${{ $depositRequest->amount }}</td>
+                                                <td>{{ $depositRequest->plan }}</td>
+                                                <td>
+                                                    <span class="@if($depositRequest->status == 'pending') badge badge-danger @elseif($depositRequest->status == 'approved') badge badge-primary @elseif($depositRequest->status == 'paid') badge badge-success @endif">{{ $depositRequest->status }}</span>
+                                                </td>
+                                                <td>${{ $depositRequest->payout }}</td>
+                                                <td>
+                                                    @if($depositRequest->status == 'approved')
+                                                        <a href="{{ route('payDeposit', $depositRequest->id) }}" class="btn btn-primary btn-sm btn-rounded waves-effect waves-light"> Pay Now <i class="fab fa-cc-mastercard"></i>
+                                                        </a>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
+                                        @else
+                                         <p style="text-align: center">No Investment Yet!</p>
+                                        @endif
                                     </table>
                                 </div>
                             </div>
@@ -627,91 +569,4 @@
 
             </div>
         </div>
-
-        <div class="modal fade exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="mb-2">Product id: <span class="text-primary">#SK2540</span></p>
-                        <p class="mb-4">Billing Name: <span class="text-primary">Neal Matthews</span></p>
-
-                        <div class="table-responsive">
-                            <table class="table table-centered table-nowrap">
-                                <thead>
-                                <tr>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Product Name</th>
-                                    <th scope="col">Price</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        <div>
-                                            <img src="{{ asset('public/assets/images/product/img-7.png') }}" alt="" class="avatar-sm">
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div>
-                                            <h5 class="text-truncate font-size-14">Wireless Headphone (Black)</h5>
-                                            <p class="text-muted mb-0">$ 225 x 1</p>
-                                        </div>
-                                    </td>
-                                    <td>$ 255</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">
-                                        <div>
-                                            <img src="{{ asset('public/assets/images/product/img-4.png') }}" alt="" class="avatar-sm">
-                                        </div>
-                                    </th>
-                                    <td>
-                                        <div>
-                                            <h5 class="text-truncate font-size-14">Phone patterned cases</h5>
-                                            <p class="text-muted mb-0">$ 145 x 1</p>
-                                        </div>
-                                    </td>
-                                    <td>$ 145</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h6 class="m-0 text-right">Sub Total:</h6>
-                                    </td>
-                                    <td>
-                                        $ 400
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h6 class="m-0 text-right">Shipping:</h6>
-                                    </td>
-                                    <td>
-                                        Free
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h6 class="m-0 text-right">Total:</h6>
-                                    </td>
-                                    <td>
-                                        $ 400
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end modal -->
 @endsection

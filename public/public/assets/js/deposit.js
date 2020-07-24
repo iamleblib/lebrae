@@ -11,6 +11,16 @@ let bankMessage = document.querySelector('#bankMessage');
 let bankSuccessMessage = document.querySelector('#bankSuccessMessage');
 let bankBtn = document.querySelector('#bankBtn');
 
+//Select Payment GateWay
+let bankForm = document.querySelector('#bankForm');
+let bitcoinForm = document.querySelector('#bitcoinForm');
+let bankImg = document.querySelector('#bankImg');
+let bitcoinImg = document.querySelector('#bitcoinImg');
+let interestHolder = document.querySelector('#interestHolder');
+let interest = document.querySelector('#interest');
+let payOutText = document.querySelector('#payOutText');
+
+
 
 function  investPlan($plan) {
     switch ($plan) {
@@ -25,6 +35,8 @@ function  investPlan($plan) {
             bankInput.value = "";
             bankSuccessMessage.style.display = "none";
             bankBtn.style.display = "none";
+            interestHolder.style.display = "none";
+            interestHolder.value = "";
             break;
         case "advance":
             advanceContainer.style.opacity = "1";
@@ -37,6 +49,8 @@ function  investPlan($plan) {
             bankInput.value = "";
             bankSuccessMessage.style.display = "none";
             bankBtn.style.display = "none";
+            interestHolder.style.display = "none";
+            interestHolder.value = "";
             break;
         case "ultimate":
             ultimateContainer.style.opacity = "1";
@@ -49,15 +63,11 @@ function  investPlan($plan) {
             bankInput.value = "";
             bankSuccessMessage.style.display = "none";
             bankBtn.style.display = "none";
+            interestHolder.style.display = "none";
+            interestHolder.value = "";
             break;
     }
 }
-
-//Select Payment GateWay
-let bankForm = document.querySelector('#bankForm');
-let bitcoinForm = document.querySelector('#bitcoinForm');
-let bankImg = document.querySelector('#bankImg');
-let bitcoinImg = document.querySelector('#bitcoinImg');
 
 function depositOption($deposit) {
     switch ($deposit) {
@@ -86,12 +96,16 @@ function makeDepositBank() {
             bankInput.style.border = "1px solid red";
             bankMessage.innerHTML = "Your value must be greater than $"+bankInput.value + " and not more than $927.84";
             bankBtn.style.display = "none";
+            interestHolder.style.display = "none";
         } else {
             bankSuccessMessage.style.display = "block";
             bankMessage.style.display = "none";
             bankInput.style.border = "2px solid green";
             bankSuccessMessage.innerHTML = "Value accepted";
             bankBtn.style.display = "block";
+            interestHolder.style.display = "block";
+            interest.value = "$"+(((bankInput.value)/100)*2.5);
+            payOutText.innerHTML = "Per Week";
         }
 
     } else if (knowWhatToChoose.value === "Advance") {
@@ -102,12 +116,16 @@ function makeDepositBank() {
             bankInput.style.border = "1px solid red";
             bankMessage.innerHTML = "Your value must be greater than $"+bankInput.value + " and not more than $9,278.35";
             bankBtn.style.display = "none";
+            interestHolder.style.display = "none";
         } else {
             bankSuccessMessage.style.display = "block";
             bankMessage.style.display = "none";
             bankInput.style.border = "2px solid green";
             bankSuccessMessage.innerHTML = "Value accepted";
             bankBtn.style.display = "block";
+            interestHolder.style.display = "block";
+            interest.value = "$"+(((bankInput.value)/100)*10);
+            payOutText.innerHTML = "Per Month";
         }
     } else if (knowWhatToChoose.value === "Ultimate") {
         //    Code to run for the advance plan
@@ -117,20 +135,16 @@ function makeDepositBank() {
             bankInput.style.border = "1px solid red";
             bankMessage.innerHTML = "Your value must be greater than $"+bankInput.value + " and not more than $92783.50";
             bankBtn.style.display = "none";
+            interestHolder.style.display = "none";
         } else {
             bankSuccessMessage.style.display = "block";
             bankMessage.style.display = "none";
             bankInput.style.border = "2px solid green";
             bankSuccessMessage.innerHTML = "Value accepted";
             bankBtn.style.display = "block";
+            interestHolder.style.display = "block";
+            interest.value = "$"+(((bankInput.value)/100)*60);
+            payOutText.innerHTML = "Per Semester (6months)";
         }
     }
 }
-
-
-const button = document.querySelector('#bankBtnPop');
-button.addEventListener('click', () => { ddoptinbox.openclose('open') });
-button.click();
-
-
-

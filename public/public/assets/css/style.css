@@ -162,3 +162,10 @@
 #bankBtn {
     display: none;
 }
+
+
+/*Calculate interest*/
+
+#interestHolder {
+    display: none;
+}
