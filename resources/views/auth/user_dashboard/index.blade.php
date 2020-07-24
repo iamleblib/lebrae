@@ -17,11 +17,32 @@
                                     <li class="breadcrumb-item active">Dashboard</li>
                                 </ol>
                             </div>
-
                         </div>
                     </div>
                 </div>
 
+              @if(!$userAccount)
+
+                    <div id="myModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <strong>Account Details Notification</strong>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Hey {{ auth()->user()->fname }}, Use The below link to provide us with your Account Details for Withdrawal. Thanks</p>
+                                    <hr>
+                                    <a href="{{ route('profile') }}" class="btn btn-primary">Provide Complete Account Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              @endif
+
+              @if(!auth()->user()->valid_id)
+                    <p>Your profile is one step away, Please upload a valid mode of identification and a passport to complete registration.</p>
+                @endif
 
 
                 <div class="row">

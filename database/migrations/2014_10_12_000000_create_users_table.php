@@ -26,6 +26,9 @@ class CreateUsersTable extends Migration
             $table->string('country');
             $table->string('refferal')->nullable();
             $table->string('password');
+            $table->string('valid_id')->nullable();
+            $table->string('passport')->nullable();
+            $table->string('next_of_kin')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

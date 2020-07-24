@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'fname', 'lname', 'email', 'phone', 'gender', 'dob', 'country', 'refferal', 'password',
+        'fname', 'lname', 'email', 'phone', 'gender', 'dob', 'country', 'refferal', 'password', 'next_of_kin', 'passport', 'valid_id'
     ];
 
     /**
@@ -43,5 +43,9 @@ class User extends Authenticatable
         } else {
             return false;
         }
+    }
+
+    public function usersAccount() {
+        return $this->hasMany(Users_account::class);
     }
 }

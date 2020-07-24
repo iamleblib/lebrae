@@ -23,5 +23,19 @@ Route::get('user_dashboard', function () {
 
 Auth::routes();
 
+//deposit page
+Route::get('make-deposit', 'DashboardController@makeDeposit')->name('make-deposit');
+//Route::get('deposit-request', 'TransactionController@depositFund')->name('depositFund');
+
 Route::get('/dashboard', 'DashboardController@index')->name('home');
 Route::get('/profile', 'DashboardController@profile')->name('profile');
+Route::post('/profile/update', 'DashboardController@updateProfile')->name('profile.update');
+//User Bank Account
+Route::post('/account/bitcoin', 'UsersAccountController@userBitStore')->name('userBitStore');
+Route::post('/account/bitcoin/update', 'UsersAccountController@userBitcoinUpdate')->name('userBitcoinUpdate');
+Route::post('/account/bank/create', 'UsersAccountController@userBankStore')->name('userBankStore');
+Route::post('/account/bank', 'UsersAccountController@userBankUpdate')->name('userBankUpdate');
+Route::get('/account/index', 'UsersAccountController@index')->name('index');
+
+//Valid ID
+Route::put('/account/upload', 'UsersAccountController@uploadId')->name('valid_id');
