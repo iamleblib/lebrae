@@ -7,6 +7,28 @@
                 <div class="card">
                     <div class="card-header bg-white">
                         <h3 class="sa-success">Select Deposit Plan</h3>
+                       <?php
+                        if(isset($_GET['message'])) {
+                            ?>
+                        <div id="myModal" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <strong>Deposit Request</strong>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Hey {{ auth()->user()->fname }}, Your Deposit Request has been sent for further review.
+                                            <br>We will get back to you shortly</p>
+                                        <hr>
+                                        <a href="{{ route('home') }}" class="btn btn-primary">Continue</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <?php
+                        }
+                       ?>
                     </div>
                 </div>
 
@@ -116,17 +138,29 @@
                     <div class="col-md-7 pl-5">
                         {{--Form for bank deposit--}}
                         <div id="bankForm">
-                            <form action="" method="post">
-                                <input hidden class="form-control" id="knowWhatToChoose">
+                            <form action="{{ route('depositRequest') }}" method="post">
+                                @csrf
+                                <input hidden class="form-control" id="knowWhatToChoose" name="plan">
                                 <label for="amount">Amount <small>(in Naira)</small></label>
                                 <div class="input-group">
-                                    <input onkeyup="makeDepositBank()"   id="bankInput" type="number" class="form-control" data-provide="timepicker">
+                                    <input name="amount" onkeyup="makeDepositBank()"   id="bankInput" type="number" class="form-control" data-provide="timepicker">
                                     <div class="input-group-append">
                                         <span class="input-group-text"><b>USD</b></span>
                                     </div>
                                 </div>
+                                <div id="interestHolder">
+                                    <label for="amount">Interest </label>
+                                    <div class="input-group" >
+                                        <input name="interest" disabled="" id="interest" style="cursor: no-drop" type="text" class="form-control" data-provide="timepicker">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text"><b id="payOutText"></b></span>
+                                        </div>
+                                    </div>
+                                </div>
+
                                     <div class="text-danger" id="bankMessage"></div>
                                     <strong class="text-success" id="bankSuccessMessage"></strong>
+
                                 <div>
                                     <input id="bankBtn" class="btn btn-success btn-block mt-3" type="submit" value="Make Deposit">
                                 </div>

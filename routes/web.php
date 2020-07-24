@@ -25,7 +25,9 @@ Auth::routes();
 
 //deposit page
 Route::get('make-deposit', 'DashboardController@makeDeposit')->name('make-deposit');
-//Route::get('deposit-request', 'TransactionController@depositFund')->name('depositFund');
+Route::get('make-deposit?message', 'DashboardController@makeDeposit')->name('makeDepositMessage');
+Route::post('deposit-request', 'DepositRequestController@depositRequest')->name('depositRequest');
+Route::get('pay/{id}', 'DepositRequestController@payDeposit')->name('payDeposit');
 
 Route::get('/dashboard', 'DashboardController@index')->name('home');
 Route::get('/profile', 'DashboardController@profile')->name('profile');

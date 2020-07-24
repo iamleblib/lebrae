@@ -390,8 +390,10 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="{{ asset('public/assets/images/users/avatar-1.jpg') }}"
-                             alt="Header Avatar">
+                        @if(auth()->user()->passport)
+                        <img class="rounded-circle header-profile-user" src="{{ asset('storage/images/'.auth()->user()->passport ) }}"
+                             alt="Avatar">
+                        @endif
                         <span class="d-none d-xl-inline-block ml-1">{{ auth()->user()->fname . ' '. auth()->user()->lname }}</span>
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
